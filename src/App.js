@@ -10,6 +10,10 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  const removeTour = (id) => {
+    const newTours = data.filter((tour) => tour.id !== id);
+    setData(newTours);
+  };
   const fetchData = async function () {
     try {
       const response = await fetch(url);
@@ -39,7 +43,7 @@ function App() {
   return (
     <>
       <main>
-        <Tours tours={data} />
+        <Tours tours={data} removeTour={removeTour} />
       </main>
     </>
   );
